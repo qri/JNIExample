@@ -1,0 +1,5 @@
+mainpackage_HelloWorld.h
+libhello.so
+hello.dll
+*.class
+mainpackage/*.class

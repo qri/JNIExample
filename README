@@ -1,0 +1,46 @@
+JNIExample
+
+This project is a simple JNI Example which is used to generate 
+native libs (libhello.so and hello.dll)
+
+REQUIREMENTS:
+
+1. Java (we used JDK 1.7.0_21 on linux and JDK 1.7.0 on windows)
+2. GCC (gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3 on linux)
+       (gcc 4.4.7 on windows)
+3. For GCC on windows we have used MinGW64 (64 bit version of MinGW). 
+4. Update 'path' environment variable on Windows to MinGW/bin folder so that
+gcc commands can be executed directly from the command prompt.
+4. This example was tested with 64-bit Linux and Windows so make sure
+everything is 64-bit (JDK, GCC). If you have a 32-bit OS then everything 
+must be 32-bit (JDK, GCC)
+5. Please note that you will still be able to compile with gcc 32 bit on 64 bit
+platform, but Java will through a "Can't load IA 32-bit.dll on a AMD 64-bit
+ platform" exception at run time.
+
+
+COMPILATION:
+
+1. javac mainpackage/HelloWorld.java 
+2. javah -jni mainpackage.HelloWorld
+3. ./make.sh (for linux)
+   make.bat (for windows)
+   You might need to adjust Java paths int the make.bat file. 
+ 
+
+RESULTS:
+
+1. After following compilation steps on linux, a 'hello.so' file will be generated.
+2. After following compilation steps on windows, a 'libhello.dll' file will be generated.
+3. These two native lib files can the be copied under 'native-libs' folder in NativeLibsMavenExample
+project.
+
+
+TESTING:
+
+1. javac TestHello.java
+2. java -Djava.library.path=. TestHello 
+3. Expected Results:
+  Hello JNI World!!!
+
+
